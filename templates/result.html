@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <main class="hero-section">
+    <div class="container">
+      <div class="section-content">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="alert-container">
+              <h2>Aesthetic Score: </h2>
+              <p class="result-message">{{messages[0]}}</p>
+            </div>
+          {% endif %}
+        {% endwith%}
+      </div>
+
+      <div class="section-image">
+        {% with messages = get_flashed_messages() %}
+          {% if messages[1] %}
+            <img style="width: 512px;" src="{{messages[1]}}">
+          {% else %}
+            <img src="{{ url_for('static', filename='img/logo/connoixerLogo.png') }}">
+          {% endif %}
+        {% endwith%}
+      </div>
+      
+      <div class="clearfix"></div>
+
+      <div class="section-info">
+        <h3>Understand the Score</h3>
+        <p>The aesthetic score is given by a specially-trained machine learning model; or in other words, by a robot. </p>
+        <p>The project utilizes a special neural network model called convolutional neural network (ConvNet or CNN).</p>
+        <p>The machine learning model learns from a dataset called <a href="http://www.inf-cv.uni-jena.de/en/jenaesthetics">JenAesthetics</a>. The dataset pairs together images of fine-art painting and the aesthetic scores that researchers and aestheticians have assigned to the images. After numerous rounds of training on this dataset, the model will gradually formulate a judging criterion that can relatively accurately score the image presented in the dataset. Bearing in its mind the things it learned from training, the model is now capable of judging any new image according to the criterion it learned. </p>
+        <p>The predictive score, even though in a centesimal scale, usually ranges from 30 to 70. For your reference, some sample images in the learning dataset with corresponding score are posted below.</p>
+        <p style="font-size: 12px;">* The machine learning model always reflects on the statistical features of the trained dataset, so bias is naturally presented as the training dataset contains mostly western "old-master" paintings.</p>
+        <p>For more information on this dataset and the German research group that created it, visit <a href="http://www.inf-cv.uni-jena.de/en/jenaesthetics">here</a>.</p>
+        <h4>Sample Images with Score</h4>
+        <img style="width: 900px;" src="{{ url_for('static', filename='img/logo/score_sample.png') }}">
+      </div>
+
+      <div class="return"><a href="{{url_for('upload')}}"><img style="margin-right: 10px; padding: 1px; width:20px;height:20px;float:left;position:relative;" src="{{ url_for('static', filename='img/logo/return.png') }}">Return to Main Page</a>
+    </div>
+  </main>
+{% endblock %}

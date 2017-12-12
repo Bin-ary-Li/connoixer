@@ -1,0 +1,41 @@
+{% extends "mobile/layout.html" %}
+
+{% block content %}
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <main class="hero-section">
+    <div class="container">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert-container">
+              <p class="alert-message">{{message}}</p>
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith%}
+      <div class="section-content">
+        <div class="section-image">
+          <img src="{{ url_for('static', filename='img/logo/connoixerLogo.png') }}">
+        </div>
+        <h2>Discover aesthetics.</h2>
+        <p class="instruction">Have your images scored by ConnoiXer the A.I. critic, starting by uploading your image here: </p>
+        <div class="section-form">
+          <form class="btn-primary" method=POST enctype=multipart/form-data action="{{ url_for('upload') }}" class="btn-primary">
+              <input type="file" id="uploadfile" name=photo class="inputfile" onchange="checkInput()">
+              <label class="uploadlabel" for="uploadfile">
+                <img src="{{ url_for('static', filename='img/logo/uploadlogo.png') }}" style="width:80px;height:80px;float:left;position:relative;"><p>Upload Image</p></label>
+              <div id="submitarea" style="visibility: hidden;">
+              <input type="submit" id="submitfile" class="inputfile">
+              <label class="submitlabel" for="submitfile"><img src="{{ url_for('static', filename='img/logo/checkmark.png') }}" style="width:65px;height:65px;position:relative;"><p>Submit</p></label>
+              </div> 
+          </form>
+          <a href="{{ url_for('about') }}" class="btn-secondary"><p>Learn more</p></a>
+        </div>
+        <p class="warning">Note: After upload your image, it might take a few minutes for the server to respond. Please <strong>WAIT</strong> patiently and <strong>REFRAIN</strong> from refreshing the page or returning to previous page.</p>
+      </div>
+      
+      <div class="clearfix"></div>
+
+    </div>
+  </main>
+{% endblock %}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ConnoiXer</title>
+    <meta name="description" content="ConnoiXer the AI art critic">
+    <meta name="keywords" content="machine learning, art, aesthetics, neural network">
+    <meta name="author" content="Bin Li">
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo/favicon-16.png') }}" sizes="16x16">  
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo/favicon-32.png') }}" sizes="32x32">  
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo/favicon-96.png') }}" sizes="96x96"> 
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1 class="title"><a href="{{ url_for('upload') }}">ConnoiXer</a> </h1>
+      </div>
+    </header>
+    
+    {% block content %}
+    {% endblock %}
+  </body>
+  <footer>
+    <div class="container">
+      <div class="credit">
+        <p>Project Creator: <a href="http://binli.io" style="color=#fff">Bin Li, Emerson College</a></p>
+        <p>Technical Consultant: <a href="https://www.linkedin.com/in/teng-liu-2198b661/" style=" color=#fff"> Teng Liu, PhD, Rensselaer Polytechnic Institute</a></p>
+        <div class="logo-wrapper" style="padding-top: 10px;">
+          <img src="{{ url_for('static', filename='img/logo/Emerson.png') }}" style="width:40px; ">
+          <img src="{{ url_for('static', filename='img/logo/RPI.png') }}" style="width:54px; margin-left: 20px;">
+        </div>
+      </div>
+      <div class="notes">
+        <p>Development Enviroment: TensorFlow, Python, Google Cloud Platform.</p>
+        <p>Special thanks to <a href="http://www.inf-cv.uni-jena.de/index.html" style="color=#fff">Computer Vision Group at the University of Jena</a> for providing learning dataset.</p>
+      </div>
+    </div>
+  </footer>
+</html>

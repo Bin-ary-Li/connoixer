@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <main class="about-section">
+    <div class="container">
+	    <h2>About ConnoiXer</h2>
+	    <div class="section-content">
+		    <p>ConnoiXer is an interdisciplinary project that utilizes state-of-the-art machine learning technology to examine arts, beauty, and aesthetics. It employs numerous neural network models that are trained on open-source datasets. The project is still on-going and improving. At its fruition, ConnoiXer will be able to fulfill tasks such as aesthetic value evaluation, painting style/genre classification, and art auctioned price assessment.</p>
+		    <p style="font-size: 26px; font-weight: 300;color: #0086b3;">How to use</p>
+		    <p>In current version, user will be able to submit his/her image at <a href="{{ url_for('upload') }}">the main page</a> of this website. The image will be sent to a trained convolutional neural network (CNN) model to judge its aesthetic value (on a scale from 0 to 100, with 100 being the best). Your uploaded images will be deleted after model finishing processing. Please give it try and experience it yourself.</p>
+		    <p>More features are coming in the future.</p>
+		    <h3>About Dataset</h3>
+		    <p>This version of ConnoiXer takes advantage of a research-oriented database called <a href="http://www.inf-cv.uni-jena.de/en/jenaesthetics">Jenaesthetic</a> that created by the researchers at the University of Jena.</p>
+		    <p>Quoted from their website: </p>
+		    <p>"The dataset consists of 1628 highly aesthetic painting from 11 different western art periods. 16 different keywords have been selected to cover most of the common subject matters in a painting. For each painting, 1-3 subject matter keywords have been assigned in the order of their impact on the visual appearance of the painting."</p>
+		    <p>Some sample images from the dataset are posted below:</p>
+		    <img style="width: 700px;" src="{{ url_for('static', filename='img/logo/JenAesthetics1.jpg') }}">
+		    <img style="width: 700px;" src="{{ url_for('static', filename='img/logo/JenAesthetics2.jpg') }}">
+		</div>
+		<div class="section-image">
+			<img src="{{ url_for('static', filename='img/logo/connoixerLogo.png') }}">
+		</div>
+		<div class="clearfix"></div>
+		<div class="return"><a href="{{url_for('upload')}}"><img style="margin-right: 10px; padding: 1px; width:20px;height:20px;float:left;position:relative;" src="{{ url_for('static', filename='img/logo/return.png') }}">Return to Main Page</a>
+		</div>
+    </div>
+  </main>
+{% endblock %}
+
