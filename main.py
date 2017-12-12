@@ -2,17 +2,17 @@ import os, io
 import image_prescale, resize
 import googlecloudaccess
 import logging
-from google.cloud import storage
+# from google.cloud import storage
 
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 from flask_mobility import Mobility
 from flask_mobility.decorators import mobile_template
 from werkzeug.utils import secure_filename
 from shutil import copyfile
-from google.appengine.api import app_identity
+# from google.appengine.api import app_identity
 
 ALLOWED_EXTENSIONS = set(['jpg', 'jpeg'])
-CLOUD_STORAGE_BUCKET = os.environ['CLOUD_STORAGE_BUCKET']
+# CLOUD_STORAGE_BUCKET = os.environ['CLOUD_STORAGE_BUCKET']
 
 app = Flask(__name__)
 app.secret_key = "@ritsukabbsecret_key"
