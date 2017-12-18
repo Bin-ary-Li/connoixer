@@ -1,6 +1,7 @@
 from oauth2client.client import GoogleCredentials
 from googleapiclient import discovery
 from googleapiclient import errors
+from google.appengine.runtime import DeadlineExceededError
 from flask import jsonify
 
 # credential for hosting on Google Cloud Platform
@@ -15,4 +16,6 @@ def getPrediction(jsonFile):
 		return response
 	except errors.HttpError, err:
 		return 'There was an error creating the model. Check the details:\n' + str(err._get_reason())
+	except DeadlineExceededError: 
+		return 'The request did not complete in time. Please try again.'
 

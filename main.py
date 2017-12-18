@@ -1,4 +1,4 @@
-import os, io
+import os, io, time
 import image_prescale, resize
 import googlecloudaccess
 import logging
@@ -39,6 +39,7 @@ def upload(template):
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
+            filename = filename + str(int(time.time()))
             imageFile = file
             # Create a Cloud Storage client.
             gcs = storage.Client()
@@ -73,10 +74,11 @@ def upload(template):
 @app.errorhandler(500)
 def server_error(e):
     logging.exception('An error occurred during a request.')
-    return """
+    flash("""
     An internal error occurred: <pre>{}</pre>
-    See logs for full stacktrace.
-    """.format(e), 500
+    See logs for full stacktrace. Please try again.
+    """.format(e), 500)
+    return redirect(url_for('result')) 
 
 # result page 
 @app.route("/result", methods=['GET'])
